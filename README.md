@@ -6,15 +6,31 @@ NodeJS selenium automation sample test for Lambdatest Cloud GRID.
 - Download & Install node package manager from
    https://www.npmjs.com/get-npm
 
-## Install Selenium Webdriver
+## Install Dependencies
 ```bash
-npm i selenium-webdriver
+npm i
 ```
 
 ### Configuring test.
-- Replace {username} with your username 
-- Replace {accessToken}  with your username 
-- List of supported platfrom, browser, version can be found at https://www.lambdatest.com/capabilities-generator/
+
+Set LambdaTest Username and Access Key in environment variables.
+
+**For Linux/macOS**
+ 
+```
+export LT_USERNAME="YOUR_USERNAME"
+export LT_ACCESS_KEY="YOUR ACCESS KEY"
+```
+
+**For Windows**
+
+```
+set LT_USERNAME="YOUR_USERNAME"
+set LT_ACCESS_KEY="YOUR ACCESS KEY"
+```
+
+
+ **Tip** : List of supported platfrom, browser, version can be found at https://www.lambdatest.com/capabilities-generator/
 
 
 ### Executing test
