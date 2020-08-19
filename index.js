@@ -31,22 +31,29 @@ const GRID_HOST = 'hub.lambdatest.com/wd/hub';
 
 function searchTextOnGoogle() {
 
+    const platform = process.env.LT_OPERATING_SYSTEM || 'windows 10';
+    const browserName = process.env.LT_BROWSER_NAME || 'chrome';
+    const version = process.env.LT_BROWSER_VERSION || '80.0';
+    const buildName = process.env.LT_BUILD_NAME || 'NodeJS build';
+    const testName = process.env.LT_TEST_NAME || 'Test 1';
+
     // Setup Input capabilities
     const capabilities = {
-        platform: 'windows 10',
-        browserName: 'chrome',
-        version: '80.0',
+        platform: platform,
+        browserName: browserName,
+        version: version,
         network: true,
         visual: true,
         console: true,
         video: true,
-        name: 'Test 1', // name of the test
-        build: 'NodeJS build' // name of the build
+        name: testName, // name of the test
+        build: buildName // name of the build
     }
 
     // URL: https://{username}:{accessToken}@beta-hub.lambdatest.com/wd/hub
     const gridUrl = 'https://' + USERNAME + ':' + KEY + '@' + GRID_HOST;
     console.log(gridUrl);
+    console.log(capabilities);
     // setup and build selenium driver object 
     const driver = new webdriver.Builder()
         .usingServer(gridUrl)
