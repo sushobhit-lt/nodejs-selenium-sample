@@ -1,0 +1,32 @@
+---
+resources:
+  - name: nodejs-selenium-sample
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/sushobhit-lt/nodejs-selenium-sample.git
+
+jobs:
+  - name: 'Run over Lambdatest Hub'
+    public: true
+    plan:
+      - get: nodejs-selenium-sample
+        trigger: true
+      - task: 'Install dependencies and execute'
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: node, tag: "12" }
+          inputs:
+            - name: nodejs-selenium-sample
+          run:
+            path: /bin/sh
+            args:
+              - -c
+              - |
+                cd nodejs-selenium-sample
+                npm install
+                export LT_USERNAME=username
+                export LT_ACCESS_KEY=accessKey
+                node index.js

@@ -1,13 +1,12 @@
 ## NodeJS Automation Lambdatest
-
 NodeJS selenium automation sample test for Lambdatest Cloud GRID.
 
-## Install Node package manager
+### Install Node package manager
 - Download & Install node package manager from
    https://www.npmjs.com/get-npm
 
-## Install Dependencies
-```bash
+### Install Dependencies
+```
 npm i
 ```
 
@@ -34,9 +33,35 @@ set LT_ACCESS_KEY="YOUR ACCESS KEY"
 
 
 ### Executing test
-```bash
+```
 node index.js
 ```
+
+
+## Execute using Concourse-CI Pipeline
+
+#### Pre-requisites for concourse-ci 
+- install and start `concourse` server [http://127.0.0.1:8080](http://127.0.0.1:8080)
+- install `fly` cli tool, if already installed check version using,
+```
+fly -v
+```
+#### Configuring Pipeline
+- open terminal
+- login to concourse server and save the target using,
+```
+fly -t ci login -c http://127.0.0.1:8080 -u test -p test
+```
+
+- go to the `project-folder/concourse-ci`
+- you will see YAML file `pipeline-config.yml`
+- update env `LT_USERNAME` and `LT_ACCESS_KEY` values in `pipeline-config.yml`
+- create concourse pipeline using,
+```
+fly -t ci set-pipeline -p nodejs-lambda-sample -c pipeline-config.yml
+```
+- run `nodejs-lambda-sample` pipeline using concourse web UI
+
 ## About LambdaTest
 
 [LambdaTest](https://www.lambdatest.com/) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. LambdaTest supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your [selenium automation testing](https://www.lambdatest.com/selenium-automation) to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
