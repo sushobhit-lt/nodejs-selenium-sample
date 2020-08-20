@@ -43,24 +43,68 @@ node index.js
 #### Pre-requisites for concourse-ci 
 - install and start `concourse` server [http://127.0.0.1:8080](http://127.0.0.1:8080)
 - install `fly` cli tool, if already installed check version using,
-```
-fly -v
+```sh
+$ fly -v
+6.4.1
 ```
 #### Configuring Pipeline
 - open terminal
 - login to concourse server and save the target using,
-```
-fly -t ci login -c http://127.0.0.1:8080 -u test -p test
+```sh
+$ fly -t ci login -c http://127.0.0.1:8080 -u test -p test
+logging in to team 'main'
+
+target saved
 ```
 
 - go to the `project-folder/concourse-ci`
 - you will see YAML file `pipeline-config.yml`
+
+```yaml
+resources:
+  - name: nodejs-selenium-sample
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/sushobhit-lt/nodejs-selenium-sample.git
+
+jobs:
+  - name: 'Run over Lambdatest Hub'
+    public: true
+    plan:
+      - get: nodejs-selenium-sample
+        trigger: true
+      - task: 'Install dependencies and execute'
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: node, tag: "12" }
+          inputs:
+            - name: nodejs-selenium-sample
+          run:
+            path: /bin/sh
+            args:
+              - -c
+              - |
+                cd nodejs-selenium-sample
+                npm install
+                export LT_USERNAME=username
+                export LT_ACCESS_KEY=accessKey
+                node index.js
+```
+
 - update env `LT_USERNAME` and `LT_ACCESS_KEY` values in `pipeline-config.yml`
 - create concourse pipeline using,
-```
-fly -t ci set-pipeline -p nodejs-lambda-sample -c pipeline-config.yml
+```sh
+$ fly -t ci set-pipeline -p nodejs-lambda-sample -c pipeline-config.yml
 ```
 - run `nodejs-lambda-sample` pipeline using concourse web UI
+
+![nodejs-lambda-sample pipeline](concourse-ci/screenshots/nodejs-lambda-sample-pipeline.png)
+
+![nodejs-lambda-sample execute](concourse-ci/screenshots/nodejs-lambda-sample-execute.png)
+
 
 ## About LambdaTest
 
