@@ -39,10 +39,10 @@ console.log('node parallel.js 1 stage false false "macOS Mojave" safari 12 "iPho
 console.log('node parallel.js 1 dev false "10.92.181.33" "macOS Mojave" safari 12 "iPhone X"')
 
 // require('dns').lookup('hub.lambdatest.com', (e, addr) => { console.log(addr) });
-const USERNAME = process.env.LT_USERNAME;
+USERNAME = process.env.LT_USERNAME;
 
 // AccessKey:  AccessKey can be generated from automation dashboard or profile section
-const KEY = process.env.LT_ACCESS_KEY;
+KEY = process.env.LT_ACCESS_KEY;
 
 
 async function searchTextOnGoogle() {
