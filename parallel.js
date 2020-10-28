@@ -25,10 +25,10 @@ var moment = require("moment");
 */
 
 // username: Username can be found at automation dashboard
-const USERNAME = '{username}';
+let USERNAME = '{username}';
 
 // AccessKey:  AccessKey can be generated from automation dashboard or profile section
-const KEY = '{accessKey}';
+let KEY = '{accessKey}';
 
 // gridUrl: gridUrl can be found at automation dashboard
 const GRID_HOST = 'hub.lambdatest.com/wd/hub';
