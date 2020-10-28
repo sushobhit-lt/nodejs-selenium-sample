@@ -39,6 +39,11 @@ console.log('node parallel.js 1 stage false false "macOS Mojave" safari 12 "iPho
 console.log('node parallel.js 1 dev false "10.92.181.33" "macOS Mojave" safari 12 "iPhone X"')
 
 // require('dns').lookup('hub.lambdatest.com', (e, addr) => { console.log(addr) });
+const USERNAME = process.env.LT_USERNAME;
+
+// AccessKey:  AccessKey can be generated from automation dashboard or profile section
+const KEY = process.env.LT_ACCESS_KEY;
+
 
 async function searchTextOnGoogle() {
 
@@ -70,7 +75,7 @@ async function searchTextOnGoogle() {
         // "infraProvider":["AZ"],
         // "fixedIP":"10.92.181.33",
         // "fixedIP":"10.92.181.153",
-        "geoLocation":"IN",
+        //"geoLocation":"IN",
         // "geoLocation":"RO",
         // "geoLocation": "DE",
         // "performance":true,
@@ -84,7 +89,7 @@ async function searchTextOnGoogle() {
         // "tunnelIdentifier":"xyz",
         //"safari.cookies" : true,
         // idleTimeout: 300,
-        network: false,
+        network: true,
         visual: true,
         console: true,
         video: true,
@@ -136,6 +141,8 @@ async function searchTextOnGoogle() {
 
     if (env === "prod") {
         gridUrl = "https://sushobhitd:8NFTCyOh68MjrGVTlCT9RAau9B1jIaIJQhESCXFJzvUqx057Yu@hub.lambdatest.com/wd/hub";
+        gridUrl = 'https://' + USERNAME + ':' + KEY + '@' + GRID_HOST;
+
         // if(euGrid === "true"){ 
         //     gridUrl = "https://sushobhitd:8NFTCyOh68MjrGVTlCT9RAau9B1jIaIJQhESCXFJzvUqx057Yu@eu-central-1-hub.lambdatest.com/wd/hub";
         // }
