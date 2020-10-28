@@ -18,6 +18,7 @@
   "homepage": "https://github.com/LambdaTest/nodejs-selenium-sample#readme",
   "dependencies": {
     "asyncawait": "^3.0.0",
+    "moment": "^2.29.1",
     "selenium-webdriver": "^4.0.0-alpha.5"
   }
 }
