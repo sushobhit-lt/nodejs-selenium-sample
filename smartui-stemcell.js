@@ -70,7 +70,7 @@ async function searchTextOnGoogle() {
         video: true,
         name: "test session", // name of the test
         build: platform + browserName + version, // name of the build
-        "smartUI.project": "stemcell",
+        "smartUI.project": "stemcell-3rd-July",
         "smartUI.baseline": false,
         // "selenium_version": "4.0.0",
          build: "stemcell-build"
@@ -157,7 +157,7 @@ async function startTest(gridUrl, capabilities, name) {
        
            
         let screenshotName = "full-page-only";
-        driver.executeScript(`smartui.takeFullPageScreenshot=${screenshotName}`).then(out => {
+        driver.executeScript(`smartui.takeScreenshot=${screenshotName}`).then(out => {
             console.log("takeScreenshot :", out)
             return
         });
