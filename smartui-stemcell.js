@@ -32,6 +32,13 @@ let KEY = '{accessKey}';
 const GRID_HOST = 'hub.lambdatest.com/wd/hub';
 // const GRID_HOST='stage-hub.lambdatestinternal.com/wd/hub';
 
+console.log('node smartui-stemcell.js 1280x960 10.244.33.199')
+console.log('node smartui-stemcell.js 1024x768 10.244.33.199')
+console.log('node smartui-stemcell.js 1920x1080 10.244.33.199')
+
+console.log('node smartui-stemcell.js 1280x960 10.64.113.159')
+console.log('node smartui-stemcell.js 1024x768 10.64.113.159')
+console.log('node smartui-stemcell.js 1920x1080 10.64.113.159')
 
 console.log('node smartui-stemcell.js 1024x768')
 console.log('node smartui-stemcell.js 1280x960')
@@ -70,7 +77,8 @@ async function searchTextOnGoogle() {
         video: true,
         name: "test session", // name of the test
         build: platform + browserName + version, // name of the build
-        "smartUI.project": "stemcell-3rd-July",
+        "smartUI.project": "stemcell-3rd-July-testing",
+        "smartUI.build": "Inventory M1",
         "smartUI.baseline": false,
         // "selenium_version": "4.0.0",
          build: "stemcell-build"
