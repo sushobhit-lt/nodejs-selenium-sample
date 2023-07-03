@@ -33,10 +33,9 @@ const GRID_HOST = 'hub.lambdatest.com/wd/hub';
 // const GRID_HOST='stage-hub.lambdatestinternal.com/wd/hub';
 
 
-console.log('node parallel.js 1 stage false "10.5.0.53" "win10" firefox 75')
-console.log('node parallel.js 1 stage false false "Windows 7" "Internet Explorer" 8 "Galaxy S10" 1.17.0')
-console.log('node parallel.js 1 stage false false "macOS Mojave" safari 12 "iPhX"')
-console.log('node parallel.js 1 dev false "10.92.181.33" "macOS Mojave" safari 12 "iPhone X"')
+console.log('node smartui-stemcell.js 1024x768')
+console.log('node smartui-stemcell.js 1280x960')
+console.log('node smartui-stemcell.js 1920x1080')
 
 // require('dns').lookup('hub.lambdatest.com', (e, addr) => { console.log(addr) });
 USERNAME = process.env.LT_USERNAME;
@@ -49,13 +48,13 @@ async function searchTextOnGoogle() {
 
     var keys = process.argv;
     console.log(keys);
-    let parallelCount = keys[2] || 1;
-    let env = keys[3];
+    let parallelCount = 1;
+    let env = "prod";
+    let fixedIP = keys[3];
     let tunnel = keys[4] || false;
-    let fixedIP = keys[5];
-    let platform = keys[6] || "Windows 10";
+    let platform = keys[6] || "monterey";
     let browserName = keys[7] || "chrome";
-    let version = keys[8] || "78.0";
+    let version = keys[8] || "latest";
 
     // Setup Input capabilities
     let capabilities = {
@@ -63,7 +62,7 @@ async function searchTextOnGoogle() {
         "browserName": browserName,
         "version": version,
 
-        "resolution" : "1024x768",
+        "resolution" : keys[2] || "1024x768",
         idleTimeout: 1800,
         // network: true,
         visual: true,

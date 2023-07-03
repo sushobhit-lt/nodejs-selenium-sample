@@ -18,7 +18,12 @@
   "homepage": "https://github.com/LambdaTest/nodejs-selenium-sample#readme",
   "dependencies": {
     "asyncawait": "^3.0.0",
+    "chrome-launcher": "^0.15.2",
+    "chrome-remote-interface": "^0.32.2",
     "moment": "^2.29.1",
-    "selenium-webdriver": "^4.0.0-alpha.5"
+    "mz": "^2.7.0",
+    "node": "^16.0.0",
+    "resemblejs": "^4.1.0",
+    "selenium-webdriver": "^3.6.0"
   }
 }
